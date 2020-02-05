@@ -1,0 +1,40 @@
+<body>
+	<div class="body">
+		<div class="container">
+
+	<% if @user.errors.any? %>
+	<div id="error_explanation">
+    <h2><%= @user.errors.count %>errors prohibited this book from being saved:</h2>
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+       <li><%= msg %></li>
+       <% end %>
+      </div>
+      <% end %>
+
+		  <%= flash[:notice] %>
+			<div class=row>
+				<div class="col-md-6 col-md-offset-3">
+					<h1>User info</h1>
+					<%= form_for(@user) do |f| %>
+					<h5>Name</h5>
+						<p><%= f.text_field :name %></p>
+
+					<div class="form-group has-icon">
+    					<div class="user-edit-image">
+							<h5>Image</h5>
+								<%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user-edit-form" %>
+						</div>
+					</div>
+
+					<h5>Introduction</h5>
+						<%= f.text_area :introduction %>
+
+					<%= f.submit "Update User" %>
+
+					<%end%>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>

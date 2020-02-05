@@ -6,10 +6,6 @@
 	box-sizing: border-box;
 }
 
-div{
-	display: block;
-}
-
 header{
 	color: white;
 }
@@ -21,6 +17,12 @@ header{
 
 h1{
 	font-size: 36px;
+	margin-bottom: 10px
+}
+
+h2{
+	display: block;
+	font-size: 30px;
 	margin-top: 20px;
 	margin-bottom: 10px
 }
@@ -29,18 +31,13 @@ body{
 	font-size: 14px;
 }
 
-div{
-	display: block;
-}
-
 .body{
-	margin-top: 51px;
+	margin-top: 65px;
 }
 
 .container{
 	width: 750px;
 	margin: auto;
-	padding: 15px;
 }
 
 .navbar-left{
@@ -55,14 +52,11 @@ div{
 ul{
 	display: block;
 	color: #9b9b9b;
-	padding-top: 15px;
-	padding-bottom: 15px;
 }
 
 li{
 	position: relative;
 	display: block;
-	padding: 10px 15px;
 }
 
 .row{
@@ -83,3 +77,7 @@ p{
 	margin-top: 10px;
 }
 
+.table{
+	width: 100%;
+	margin-bottom: 20px;
+}

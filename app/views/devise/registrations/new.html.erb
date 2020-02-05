@@ -1,39 +1,9 @@
 <body>
-<header class="navbar navbar-field-top navbar-inverse">
-  <div class="container">
-    <nav class="nav navbar-nav navbar-left">
-      <span class="top">Bookers</span>
-    </nav>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <p class="glyphicon glyphicon-home home"> 
-            <%= link_to "Home", root_path %>
-          </p>
-        </li>
-        <li>
-          <p class="glyphicon glyphicon-link about"> 
-            <%= link_to "About", "#" %>
-          </p>
-        </li>
-        <li>
-          <p class="glyphicon glyphicon-edit sign-up"> 
-            <%= link_to "Sign up", new_user_registration_path %>
-          </p>
-        </li>
-        <li>
-          <p class="glyphicon glyphicon-log-in sign-in"> 
-            <%= link_to "login", new_user_session_path %>
-          </p>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</header>
 
 <div class="body">
   <div class="container">
-    <p id="notice"></p>
+    
+    <%= flash[:notice] %>
 
 <h2>Sign up</h2>
 
@@ -72,15 +42,7 @@
   </div>
 </div>
 
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-3 col-xs-offset-9">
-        <p>CopyRight Infratop.inc</p>
-      </div>
-    </div>
-  </div>
-</footer>
+
 
 </body>
 
