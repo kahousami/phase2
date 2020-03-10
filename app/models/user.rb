@@ -8,8 +8,15 @@ class User < ApplicationRecord
 
   has_many :books, dependent: :destroy
 
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_books, through: :favorites, source: :book
+  def favorited_by?(book)
+    self.favorites.exists?(book_id: book.id)
+  end
+
+  has_many :book_comments, dependent: :destroy
+
   validates :name, presence: true, length: { maximum: 20}
   validates :name, presence: true, length: { minimum: 2}
-  validates :introduction, length: {maximum: 50}
-  
+
 end

@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
   </head>
 
   <body>
@@ -24,7 +25,7 @@
               <li><%= link_to books_path do %><p class="glyphicon glyphicon-book books"> Books</p><%end%></li>
               <li><%= link_to destroy_user_session_path, method: :delete do %><p class="glyphicon glyphicon-log-out logout"> logout</p><%end%></li>
           </ul>
-          <% else %>
+        <% else %>
             <ul class="nav navbar-nav navbar-right">
               <li><%= link_to root_path do %><p class="glyphicon glyphicon-home home"> Home</p><%end%></li>
               <li><%= link_to home_about_path do %><p class="glyphicon glyphicon-link about"> About</p><%end%></li>
@@ -47,5 +48,6 @@
       </div>
     </div>
   </footer>
+  
   </body>
 </html>

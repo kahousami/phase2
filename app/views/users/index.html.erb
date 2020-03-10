@@ -5,9 +5,9 @@
  <%= flash[:notice] %>
       <div class="row">
           <div class="col-xs-3">
-              <h2>User info</h2>
-              <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-              <table class="table">
+            <h2>User info</h2>
+            <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+            <table class="table">
 	          	<tbody>
 	          		<tr>
 	          			<th>name</th>
@@ -18,23 +18,23 @@
 	          			<th><%= @user.introduction %></th>
 	          		</tr>
 	          	</tbody>
-          	  </table>
+          	</table>
 
-        <div class="row">
-         <% if @user.id == current_user.id %>
-         <%= link_to edit_user_path(@user) do %>
-            <p class="col-xs-12 btn btn-default glyphicon glyphicon-wrench"></p>
-         <%end%>
-         <%end%>
+	        <div class="row">
+	         <% if @user.id == current_user.id %>
+	         <%= link_to edit_user_path(@user) do %>
+	            <p class="col-xs-12 btn btn-default glyphicon glyphicon-wrench"></p>
+	         <%end%>
+	         <%end%>
 
-        </div>
+	        </div>
 
           	<h2>New book</h2>
           		<%= form_for(@book) do |f| %>
           		<div class="new">Title</div>
-          		<%= f.text_field :title %>
+          		<%= f.text_field :title, class: "col-xs-12 field" %>
           		<div class="new">Opinion</div>
-          		<%= f.text_area :body %>
+          		<%= f.text_area :body, class: "col-xs-12 field" %>
 	            <p><%= f.submit 'Create Book', class: "btn btn-primary col-xs-12" %></p>
           		<% end %>
           </div>
@@ -50,7 +50,7 @@
 		      <th></th>
 		      <th colspan="3"></th>
  		    </tr>
- 		  
+
 		  </thead>
 
 		  <tbody>

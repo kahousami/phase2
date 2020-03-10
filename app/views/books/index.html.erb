@@ -46,9 +46,9 @@
           	<h2>New book</h2>
           		<%= form_for(@book) do |f| %>
           		<div class="new">Title</div>
-          		<%= f.text_field :title %>
+          		<%= f.text_field :title, class: "col-xs-12 field" %>
           		<div class="new">Opinion</div>
-          		<%= f.text_area :body %>
+          		<%= f.text_area :body, class: "col-xs-12 field" %>
             	<p><%= f.submit 'Create Book', class: "btn btn-primary col-xs-12" %></p>
           		<% end %>
 
@@ -59,10 +59,12 @@
 	    <table class="table table-hover table-inverse">
 		  <thead>
 		    <tr>
- 		     <th></th>
+          <th></th>
 		      <th>Title</th>
 		      <th>Opinion</th>
- 		      <th colspan="3"></th>
+          <th></th>
+          <th></th>
+ 		      <th colspan="5"></th>
 		    </tr>
 		  </thead>
 
@@ -74,7 +76,22 @@
          <%end%></td>
 		  	 <td><%= link_to book.title, book_path(book.id) %></td>
 		  	 <td><%= book.body %></td>
-		  	</tr>
+
+         <td>
+            <% if current_user.favorited_by?(book) %>
+              <i class="fas fa-heart" style="color: red;"><%= book.favorites.count %></i>
+            <% else %>
+              <i class="far fa-heart" style="color: black;"><%= book.favorites.count %></i>
+            <% end %>
+         </td>
+
+         <td>
+            <p>
+              <%= link_to "#{book.book_comments.count} コメント", book_path(book.id) %>
+            </p>
+         </td>
+        </tr>
+
 		  	<%end%>
 
 		  </tbody>

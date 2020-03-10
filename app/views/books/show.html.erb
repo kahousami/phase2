@@ -34,9 +34,9 @@
           	<h2>New book</h2>
           		<%= form_for(@book_new) do |f| %>
           		<div class="new">Title</div>
-          		<%= f.text_field :title %>
+          		<%= f.text_field :title, class: "col-xs-12 field" %>
           		<div class="new">Opinion</div>
-          		<%= f.text_area :body %>
+          		<%= f.text_area :body, class: "col-xs-12 field" %>
               <p><%= f.submit 'Create Book', class: "btn btn-primary col-xs-12" %></p>
           		<% end %>
           </div>
@@ -50,15 +50,54 @@
                 <%= link_to @user.name, user_path(@user) %></td>
         			<td><%= link_to @book.title, book_path(@book) %></td>
         			<td><%= @book.body %></td>
+
+              <td>
+                <%= render 'books/favorite', book: @book %>
+              </td>
+
+              <td><%= @book.book_comments.count %>件コメント</td>
+
               <% if @user.id == current_user.id %>
-            		<td><P class="btn-sm btn-success col-xs-4"><%= link_to "Edit", edit_book_path(@book) %></p></td>
-            		<td><p class="btn-sm btn-danger col-xs-4"><%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？" %></p></td>
+            		<td><P class="btn-sm btn-success col-xs-5"><%= link_to "Edit", edit_book_path(@book) %></p></td>
+            		<td><p class="btn-sm btn-danger col-xs-5"><%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？" %></p></td>
               <%end%>
+
     				</tr>
     			 </tbody>
 			     </table>
 
-    </div>
+           <h4>コメント一覧</h4>
+              <% @book.book_comments.each do |book_comment| %>
+                <table class="table">
+                  <tbody class="comment">
+                    <tr>
+                      <td class="col-xs-2">
+                        <a href="#"><%= book_comment.user.name %></a>
+                        <span class="comment-date"><%= book_comment.created_at.strftime('%Y/%m/%d') %></span>
+                      </td>
+                      <td><div class="comment-entry"><%= book_comment.comment %></div></td>
+                      <% if current_user.id == book_comment.user_id %>
+                        <td><%= link_to "Delete", book_book_comments_path(book_id: @book), method: :delete %></td>
+                      <%end%>
+                    </tr>
+                  </tbody>
+                </table>
+              <% end %>
+
+
+
+            <%= form_for [@book, @book_comment] do |f| %>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <%= f.text_area :comment, rows:'3', class: "form-control",placeholder: "コメントをここに" %>
+                    </div>
+                </div>
+                <%= f.submit "create comment", class: "btn btn-primary col-xs-12" %>
+            <% end %>
+
+          </div>
+
+
 
 
 </div>
