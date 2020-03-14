@@ -1,22 +1,25 @@
 <h2>User info</h2>
-              <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-              <table class="table">
-	          	<tbody>
-	          		<tr>
-	          			<th>name</th>
-	          			<th><%= user.name %><th>
-	          		</tr>
-	          		<tr>
-	          			<th>introduction</th>
-	          			<th><%= user.introduction %></th>
-	          		</tr>
-	          	</tbody>
-          	  </table>
+	<%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+    <table class="table">
+	    <tbody>
+	        <tr>
+	          	<th>name</th>
+	          	<th><%= user.name %><th>
+	        </tr>
+	        <tr>
+	          	<th>introduction</th>
+	          	<th><%= user.introduction %></th>
+	        </tr>
+	        <%= render 'users/status' %>
+	    </tbody>
+    </table>
 
-        <div class="row">
-          <% if user.id == current_user.id %>
-           <%= link_to edit_user_path(user) do %>
-            <p class="col-xs-12 btn btn-default glyphicon glyphicon-wrench"></p>
+    <div class="row">
+       	<% if user.id == current_user.id %>
+           	<%= link_to edit_user_path(user) do %>
+            	<p class="col-xs-12 btn btn-default glyphicon glyphicon-wrench"></p>
            <%end%>
-          <%end%>
-        </div>
+        <% else %>
+    		<%= render 'users/follow_form' %>
+        <%end%>
+    </div>

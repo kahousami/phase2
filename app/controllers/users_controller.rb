@@ -25,9 +25,21 @@ before_action :authenticate_user!
     @user = User.find(params[:id])
     if @user.update(user_params)
     redirect_to user_path(@user), notice: "userinfo was successfully updated"
-  else
-    render :edit
+    else
+      render :edit
+    end
   end
+
+  def following
+      @user  = User.find(params[:id])
+      @users = @user.followings
+      render 'show_follow'
+  end
+
+  def followers
+    @user  = User.find(params[:id])
+    @users = @user.followers
+    render 'show_follower'
   end
 
 private
